@@ -4,6 +4,10 @@
 
 local set = vim.keymap.set
 local del = vim.keymap.del
+local Util = require("lazyvim.util")
+local lazyterm = function()
+  Util.terminal(nil, { cwd = Util.root() })
+end
 
 set("n", "<leader>w", "<cmd>w<cr><esc>", { desc = "Save file" })
 
@@ -12,6 +16,8 @@ set("n", "<leader>mo", "<cmd>only<cr>", { desc = "Delete other windows" })
 set("n", "<leader>md", "<cmd>close<cr>", { desc = "Delete window" })
 set("n", "<leader>ms", "<cmd>split<cr>", { desc = "Split window below" })
 set("n", "<leader>mv", "<cmd>vsplit<cr>", { desc = "Split window right" })
+set("n", "<C-\\>", lazyterm, { desc = "Terminal (root dir)" })
+set("t", "<C-\\>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 
 del("n", "<leader>ww")
 del("n", "<leader>wd")
