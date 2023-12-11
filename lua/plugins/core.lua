@@ -1,4 +1,27 @@
 return {
+  -- julia support
+  { "kdheepak/cmp-latex-symbols" },
+
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = { "kdheepak/cmp-latex-symbols" },
+    opts = {
+      sources = require("cmp").config.sources({
+        {
+          name = "latex_symbols",
+          option = {
+            strategy = 0, -- mixed
+          },
+        },
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+        { name = "path" },
+      }, {
+        { name = "buffer" },
+      }),
+    },
+  },
+
   -- Make tokyonight transparent
   {
     "folke/tokyonight.nvim",
@@ -11,6 +34,7 @@ return {
     },
   },
 
+  -- Some neotree remaping
   {
     "nvim-neo-tree/neo-tree.nvim",
     opts = {
