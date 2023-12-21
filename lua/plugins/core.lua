@@ -99,6 +99,19 @@ return {
       ensure_installed = {
         "rust",
         "julia",
+        "c",
+        "cpp",
+      },
+    },
+  },
+
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        c = { "clang-format" },
+        cpp = { "clang-format" },
+        h = { "clang-format" },
       },
     },
   },
@@ -108,6 +121,8 @@ return {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)
       opts.servers = {
+        clangd = { mason = false },
+        nil_ls = { mason = false },
         rust_analyzer = { mason = false },
         lua_ls = {
           mason = false, -- set to false if you don't want this server to be installed with mason
