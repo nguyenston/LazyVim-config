@@ -180,7 +180,6 @@ return {
       table.insert(opts.sections.lualine_x, "😄")
     end,
   },
-
   -- or you can return new options to override all the defaults
   {
     "nvim-lualine/lualine.nvim",
