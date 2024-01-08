@@ -75,7 +75,10 @@ return {
   -- julia support
   {
     "hrsh7th/nvim-cmp",
-    dependencies = { "kdheepak/cmp-latex-symbols" },
+    dependencies = {
+      "kdheepak/cmp-latex-symbols",
+      "micangl/cmp-vimtex",
+    },
     opts = function(_, opts)
       local cmp = require("cmp")
       opts.mappings = cmp.mapping.preset.insert({
@@ -109,6 +112,21 @@ return {
         { name = "path" },
       }, {
         { name = "buffer" },
+      })
+    end,
+
+    config = function(_, opts)
+      local cmp = require("cmp")
+      for _, source in ipairs(opts.sources) do
+        source.group_index = source.group_index or 1
+      end
+      cmp.setup(opts)
+      cmp.setup.filetype("tex", {
+        sources = {
+          { name = "vimtex" },
+          { name = "buffer" },
+          -- other sources
+        },
       })
     end,
   },

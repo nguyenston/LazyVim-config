@@ -11,7 +11,7 @@ local d = ls.dynamic_node
 local fmta = require("luasnip.extras.fmt").fmta
 local rep = require("luasnip.extras").rep
 
-local snippet_utils = require("util.snippet_utils")
+local snippet_utils = require("util.snippet_utils")(vim.fn["vimtex#syntax#in_mathzone"])
 local s = snippet_utils.snippet
 local ms = snippet_utils.math_snippet
 local ts = snippet_utils.text_snippet
@@ -95,8 +95,7 @@ return {}, {
   ms("pm", t("\\pm")),
   ms("mp", t("\\mp")),
   ms("...", t("\\dots")),
-  ms("lra", t("\\leftrightarrow")),
-  ms("Lra", t("\\Leftrightarrow")),
+  ms("lrar", t("\\leftrightarrow")),
   ms("to", t("\\to")),
   ms("\\tom", t("\\mapsto")),
   ms("then", t("\\implies")),
@@ -141,7 +140,7 @@ return {}, {
   ms("lrp", fmta("\\paran{<>}", d(1, get_visual))),
   ms("lrb", fmta("\\brkt{<>}", d(1, get_visual))),
   ms("lrc", fmta("\\curly{<>}", d(1, get_visual))),
-  ms("lra", fmta("\\angle{<>}", d(1, get_visual))),
+  ms("lran", fmta("\\angle{<>}", d(1, get_visual))),
   ms("norm", fmta("\\norm{<>}", d(1, get_visual))),
   ms("abs", fmta("\\abs{<>}", d(1, get_visual))),
 
