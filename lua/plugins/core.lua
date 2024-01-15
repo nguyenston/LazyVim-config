@@ -125,8 +125,15 @@ return {
         sources = {
           { name = "vimtex" },
           { name = "buffer" },
-          -- other sources
+          { name = "path" },
         },
+      })
+      cmp.setup.filetype("markdown", {
+        sources = cmp.config.sources({
+          { name = "luasnip" },
+          { name = "path" },
+          { name = "buffer" },
+        }),
       })
     end,
   },
@@ -196,6 +203,7 @@ return {
         -- "stylua",
         -- "shfmt",
         -- "flake8",
+        "markdownlint", -- maybe works with nixos since this is not an lsp
       }
     end,
   },
@@ -233,6 +241,7 @@ return {
         clangd = { mason = false },
         nil_ls = { mason = false },
         rust_analyzer = { mason = false },
+        -- marksman = { mason = false },
         lua_ls = {
           mason = false, -- set to false if you don't want this server to be installed with mason
           -- Use this to add any additional keymaps

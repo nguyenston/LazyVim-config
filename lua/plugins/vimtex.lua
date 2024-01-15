@@ -34,7 +34,7 @@ return {
     lazy = false, -- lazy-loading will disable inverse search
     config = function()
       vim.api.nvim_create_autocmd({ "FileType" }, {
-        group = vim.api.nvim_create_augroup("lazyvim_vimtex_conceal", { clear = true }),
+        group = vim.api.nvim_create_augroup("lazyvim_tex_conceal", { clear = true }),
         pattern = { "bib", "tex" },
         callback = function()
           vim.wo.conceallevel = 2
