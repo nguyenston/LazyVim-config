@@ -213,6 +213,10 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
+        "toml",
+        "rst",
+        "ninja",
+        "python",
         "lua",
         "rust",
         "julia",
@@ -237,13 +241,35 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)
+      local enable_mason = false
       opts.servers = {
-        clangd = { mason = false },
-        nil_ls = { mason = false },
-        rust_analyzer = { mason = false },
+        julials = { mason = enable_mason },
+        tsserver = { mason = enable_mason },
+        pyright = { mason = enable_mason },
+        ruff_lsp = {
+          mason = enable_mason,
+          keys = {
+            {
+              "<leader>co",
+              function()
+                vim.lsp.buf.code_action({
+                  apply = true,
+                  context = {
+                    only = { "source.organizeImports" },
+                    diagnostics = {},
+                  },
+                })
+              end,
+              desc = "Organize Imports",
+            },
+          },
+        },
+        clangd = { mason = enable_mason },
+        nil_ls = { mason = enable_mason },
+        rust_analyzer = { mason = enable_mason },
         -- marksman = { mason = false },
         lua_ls = {
-          mason = false, -- set to false if you don't want this server to be installed with mason
+          mason = enable_mason, -- set to false if you don't want this server to be installed with mason
           -- Use this to add any additional keymaps
           -- for specific lsp servers
           ---@type LazyKeysSpec[]
@@ -264,6 +290,17 @@ return {
             },
           },
         },
+      }
+
+      opts.setup = {
+        ruff_lsp = function()
+          require("lazyvim.util").lsp.on_attach(function(client, _)
+            if client.name == "ruff_lsp" then
+              -- Disable hover in favor of Pyright
+              client.server_capabilities.hoverProvider = false
+            end
+          end)
+        end,
       }
     end,
   },

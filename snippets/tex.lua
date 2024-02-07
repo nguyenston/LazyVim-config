@@ -18,7 +18,6 @@ local ts = snippet_utils.text_snippet
 local get_match = snippet_utils.get_match
 local get_visual = snippet_utils.get_visual
 local pfx_cmd = snippet_utils.postfix_command
-local pfx = require("luasnip.extras.postfix").postfix
 
 return {}, {
   -- greek letters
@@ -77,7 +76,7 @@ return {}, {
   ms("int", c(1, { t("\\int"), sn(nil, fmta("\\int^{<>}_{<>}", { i(2, "\\infty"), i(1, "-\\infty") })) })),
   ms("det", t("\\det")),
   ms("tp", t("\\transpose")),
-  ms("dag", t("\\dag")),
+  ms("dag", t("\\dagg")),
   ms("inv", t("\\inv")),
   ms("tr", t("\\trace")),
   ms("idd", t("\\identity")),
@@ -125,9 +124,10 @@ return {}, {
   ms("nab", t("\\nabla")),
   ms("xis", t("\\exist")),
   ms("fral", t("\\forall")),
-  ms("part", t("\\partial")),
+  ms("par", t("\\partial")),
   ms("ell", t("\\ell")),
   ms("hbar", t("\\hbar")),
+  ms("pto", t("\\propto")),
 
   -- Caligraphy/Blackboard style
   pfx_cmd("cal", { cmd = "mathcal", patterns = "%u" }),
@@ -137,10 +137,10 @@ return {}, {
   ms("NN", t("\\mathbb{N}")),
 
   -- Surround
-  ms("lrp", fmta("\\paran{<>}", d(1, get_visual))),
-  ms("lrb", fmta("\\brkt{<>}", d(1, get_visual))),
-  ms("lrc", fmta("\\curly{<>}", d(1, get_visual))),
-  ms("lran", fmta("\\angle{<>}", d(1, get_visual))),
+  ms("lrp", fmta("\\lrp{<>}", d(1, get_visual))),
+  ms("lrb", fmta("\\lrb{<>}", d(1, get_visual))),
+  ms("lrc", fmta("\\lrc{<>}", d(1, get_visual))),
+  ms("lran", fmta("\\lra{<>}", d(1, get_visual))),
   ms("norm", fmta("\\norm{<>}", d(1, get_visual))),
   ms("abs", fmta("\\abs{<>}", d(1, get_visual))),
 

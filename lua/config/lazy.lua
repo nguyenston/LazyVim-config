@@ -18,6 +18,7 @@ require("lazy").setup({
     { import = "plugins.core" },
     { import = "plugins.vimtex" },
     { import = "plugins.obsidian" },
+    { import = "plugins.python" },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
