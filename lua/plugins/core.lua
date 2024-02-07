@@ -241,67 +241,9 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)
-      local enable_mason = false
-      opts.servers = {
-        julials = { mason = enable_mason },
-        tsserver = { mason = enable_mason },
-        pyright = { mason = enable_mason },
-        ruff_lsp = {
-          mason = enable_mason,
-          keys = {
-            {
-              "<leader>co",
-              function()
-                vim.lsp.buf.code_action({
-                  apply = true,
-                  context = {
-                    only = { "source.organizeImports" },
-                    diagnostics = {},
-                  },
-                })
-              end,
-              desc = "Organize Imports",
-            },
-          },
-        },
-        clangd = { mason = enable_mason },
-        nil_ls = { mason = enable_mason },
-        rust_analyzer = { mason = enable_mason },
-        -- marksman = { mason = false },
-        lua_ls = {
-          mason = enable_mason, -- set to false if you don't want this server to be installed with mason
-          -- Use this to add any additional keymaps
-          -- for specific lsp servers
-          ---@type LazyKeysSpec[]
-          -- keys = {},
-          settings = {
-            Lua = {
-              runtime = {
-                -- Tell the language server which version of Lua you're using
-                -- (most likely LuaJIT in the case of Neovim)
-                version = "LuaJIT",
-              },
-              workspace = {
-                checkThirdParty = false,
-              },
-              completion = {
-                callSnippet = "Replace",
-              },
-            },
-          },
-        },
-      }
-
-      opts.setup = {
-        ruff_lsp = function()
-          require("lazyvim.util").lsp.on_attach(function(client, _)
-            if client.name == "ruff_lsp" then
-              -- Disable hover in favor of Pyright
-              client.server_capabilities.hoverProvider = false
-            end
-          end)
-        end,
-      }
+      local use_mason = false
+      opts.servers = require("plugins.lspconfig").servers(use_mason)
+      opts.setup = require("plugins.lspconfig").setup
     end,
   },
 }
