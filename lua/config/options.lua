@@ -5,3 +5,4 @@
 local opt = vim.opt
 
 opt.linebreak = true
+vim.g.maplocalleader = ","

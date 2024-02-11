@@ -236,14 +236,4 @@ return {
       },
     },
   },
-
-  -- disable default lua_ls Settings
-  {
-    "neovim/nvim-lspconfig",
-    opts = function(_, opts)
-      local use_mason = false
-      opts.servers = require("plugins.lspconfig").servers(use_mason)
-      opts.setup = require("plugins.lspconfig").setup
-    end,
-  },
 }

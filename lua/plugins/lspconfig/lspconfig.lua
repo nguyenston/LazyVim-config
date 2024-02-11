@@ -1,4 +1,4 @@
-return {
+local imports = {
   servers = function(use_mason)
     return {
       julials = require("plugins.lspconfig.julia").julials(use_mason),
@@ -15,5 +15,16 @@ return {
 
   setup = {
     ruff_lsp = require("plugins.lspconfig.python").setup.ruff_lsp,
+  },
+}
+
+return {
+  {
+    "neovim/nvim-lspconfig",
+    opts = function(_, opts)
+      local use_mason = false
+      opts.servers = imports.servers(use_mason)
+      opts.setup = imports.setup
+    end,
   },
 }
