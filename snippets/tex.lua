@@ -1,7 +1,6 @@
 local ls = require("luasnip")
 
 local sn = ls.snippet_node
-local isn = ls.indent_snippet_node
 local t = ls.text_node
 local i = ls.insert_node
 local c = ls.choice_node
@@ -35,6 +34,8 @@ return {}, {
   ms(";De", t("\\Delta")),
   ms(";pi", t("\\pi")),
   ms(";Pi", t("\\Pi")),
+  ms(";ph", t("\\phi")),
+  ms(";Ph", t("\\Phi")),
   ms(";xi", t("\\xi")),
   ms(";Xi", t("\\Xi")),
   ms(";ps", t("\\psi")),
