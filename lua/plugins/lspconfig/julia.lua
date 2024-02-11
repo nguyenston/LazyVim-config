@@ -6,16 +6,11 @@ return {
         "julia",
         "--startup-file=no",
         "--history-file=no",
+        "--project=~/.config/nvim/julials_env/",
         "-e",
-        "    # Load LanguageServer.jl: attempt to load from ~/.config/nvim/julials_env\n"
-          .. "    # with the regular load path as a fallback\n"
-          .. "    ls_install_path = joinpath(\n"
-          .. '        homedir(), ".config",\n'
-          .. '        "nvim", "julials-env"\n'
-          .. "    )\n"
-          .. "    pushfirst!(LOAD_PATH, ls_install_path)\n"
+        " "
           .. "    using LanguageServer\n"
-          .. "    popfirst!(LOAD_PATH)\n"
+          .. "    using SymbolServer\n"
           .. '    depot_path = get(ENV, "JULIA_DEPOT_PATH", "")\n'
           .. "    project_path = let\n"
           .. "        dirname(something(\n"
