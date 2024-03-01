@@ -43,7 +43,8 @@ return {}, {
   ms(";la", t("\\lambda")),
   ms(";La", t("\\Lambda")),
   ms(";rh", t("\\rho")),
-  ms(";ep", c(1, { t("\\epsilon"), t("\\varepsilon") })),
+  ms(";ep", t("\\epsilon")),
+  ms("\\epsilonv", t("\\varepsilon")),
   ms(";mu", t("\\mu")),
   ms(";nu", t("\\nu")),
   ms(";et", t("\\eta")),
@@ -51,7 +52,7 @@ return {}, {
 
   -- sub/super-script
   ms("^", fmta("^{<>}", i(1))),
-  ms("pp", fmta("^{<>}", i(1))),
+  ms("rd", fmta("^{<>}", i(1))),
   ms("_", fmta("_{<>}", i(1))),
   ms("uu", fmta("_{<>}", i(1))),
 
@@ -67,10 +68,10 @@ return {}, {
 
   -- operations
   ms("tt", fmta("\\text{<>}", d(1, get_visual))),
-  ms("rt", fmta("\\sqrt{<>}", d(1, get_visual))),
+  ms("srt", fmta("\\sqrt{<>}", d(1, get_visual))),
   ms("ff", fmta("\\frac{<>}{<>}", { i(1), i(2) })),
   ms("ee", fmta("e^{<>}", i(1))),
-  ms("rm", fmta("\\mathrm{<>}", d(1, get_visual))),
+  ms("mrm", fmta("\\mathrm{<>}", d(1, get_visual))),
   ms("lim", c(1, { sn(nil, fmta("\\lim_{<>\\to<>}", { i(1, "n"), i(2, "\\infty") })), t("\\lim") })),
   ms("linf", c(1, { sn(nil, fmta("\\liminf_{<>\\to<>}", { i(1, "n"), i(2, "\\infty") })), t("\\liminf") })),
   ms("lsup", c(1, { sn(nil, fmta("\\limsup_{<>\\to<>}", { i(1, "n"), i(2, "\\infty") })), t("\\limsup") })),
