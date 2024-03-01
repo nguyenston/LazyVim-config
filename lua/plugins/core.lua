@@ -10,18 +10,18 @@ return {
       local ls = require("luasnip")
       return {
         {
-          "jk",
+          "<Tab>",
           function()
-            return ls.jumpable(1) and "<Plug>luasnip-jump-next" or "jk"
+            return ls.jumpable(1) and "<Plug>luasnip-jump-next" or "<Tab>"
           end,
           expr = true,
           silent = true,
           mode = "i",
         },
         {
-          "kj",
+          "<C-Tab>",
           function()
-            return ls.jumpable(-1) and "<Plug>luasnip-jump-prev" or "kj"
+            return ls.jumpable(-1) and "<Plug>luasnip-jump-prev" or "<C-Tab>"
           end,
           expr = true,
           silent = true,
@@ -35,7 +35,7 @@ return {
           mode = "s",
         },
         {
-          "<S-Tab>",
+          "<C-Tab>",
           function()
             ls.jump(-1)
           end,
