@@ -222,6 +222,7 @@ return {
         "julia",
         "c",
         "cpp",
+        "css",
       },
     },
   },
