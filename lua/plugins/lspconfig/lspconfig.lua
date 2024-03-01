@@ -6,6 +6,7 @@ local imports = {
       pyright = require("plugins.lspconfig.python").pyright(use_mason),
       ruff_lsp = require("plugins.lspconfig.python").ruff_lsp(use_mason),
       clangd = require("plugins.lspconfig.cpp").clangd(use_mason),
+      -- ccls = require("plugins.lspconfig.cpp").ccls(use_mason),
       nil_ls = { mason = use_mason },
       rust_analyzer = require("plugins.lspconfig.rust").rust_analyzer(use_mason),
       -- marksman = { mason = false },
@@ -15,6 +16,7 @@ local imports = {
 
   setup = {
     ruff_lsp = require("plugins.lspconfig.python").setup.ruff_lsp,
+    clangd = require("plugins.lspconfig.cpp").setup.clangd,
   },
 }
 

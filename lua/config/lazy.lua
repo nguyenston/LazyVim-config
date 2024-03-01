@@ -20,6 +20,7 @@ require("lazy").setup({
     { import = "plugins.vimtex" },
     { import = "plugins.obsidian" },
     { import = "plugins.python" },
+    { import = "plugins.cpp" },
     { import = "plugins.conjure" },
   },
   defaults = {
