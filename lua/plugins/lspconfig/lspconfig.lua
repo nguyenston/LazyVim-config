@@ -11,6 +11,7 @@ local imports = {
       rust_analyzer = require("plugins.lspconfig.rust").rust_analyzer(use_mason),
       -- marksman = { mason = false },
       lua_ls = require("plugins.lspconfig.lua").lua_ls(use_mason),
+      r_language_server = require("plugins.lspconfig.R").r_language_server(use_mason),
     }
   end,
 
