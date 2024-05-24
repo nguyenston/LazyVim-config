@@ -237,4 +237,6 @@ return {
       },
     },
   },
+
+  "eigenfoo/stan-vim",
 }
