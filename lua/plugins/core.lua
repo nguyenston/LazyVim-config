@@ -200,21 +200,21 @@ return {
           { "<leader>m", group = "window" },
         },
       },
-
-      -- mason doesn't work with nixos
-      {
-        "williamboman/mason.nvim",
-        opts = function(_, opts)
-          opts.ensure_installed = {
-            -- enable if not on nixos
-            -- "stylua",
-            -- "shfmt",
-            -- "flake8",
-            "markdownlint", -- maybe works with nixos since this is not an lsp
-          }
-        end,
-      },
     },
+  },
+
+  -- mason doesn't work with nixos
+  {
+    "williamboman/mason.nvim",
+    opts = function(_, opts)
+      opts.ensure_installed = {
+        -- enable if not on nixos
+        -- "stylua",
+        -- "shfmt",
+        -- "flake8",
+        "markdownlint", -- maybe works with nixos since this is not an lsp
+      }
+    end,
   },
 
   {
