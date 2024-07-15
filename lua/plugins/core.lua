@@ -1,7 +1,12 @@
 return {
   {
     "L3MON4D3/LuaSnip",
+    dependencies = {
+      "nvim-cmp",
+    },
     opts = {
+      history = true,
+      delete_check_events = "TextChanged",
       update_events = "TextChanged, TextChangedI",
       enable_autosnippets = true,
       store_selection_keys = "<Tab>",
@@ -9,38 +14,6 @@ return {
     keys = function()
       local ls = require("luasnip")
       return {
-        {
-          "<Tab>",
-          function()
-            return ls.jumpable(1) and "<Plug>luasnip-jump-next" or "<Tab>"
-          end,
-          expr = true,
-          silent = true,
-          mode = "i",
-        },
-        {
-          "<C-Tab>",
-          function()
-            return ls.jumpable(-1) and "<Plug>luasnip-jump-prev" or "<C-Tab>"
-          end,
-          expr = true,
-          silent = true,
-          mode = "i",
-        },
-        {
-          "<Tab>",
-          function()
-            ls.jump(1)
-          end,
-          mode = "s",
-        },
-        {
-          "<C-Tab>",
-          function()
-            ls.jump(-1)
-          end,
-          mode = "s",
-        },
         {
           "<C-l>",
           function()
@@ -78,9 +51,16 @@ return {
     dependencies = {
       "kdheepak/cmp-latex-symbols",
       "micangl/cmp-vimtex",
+      "saadparwaiz1/cmp_luasnip",
     },
     opts = function(_, opts)
       local cmp = require("cmp")
+      opts.snippet = {
+        expand = function(args)
+          require("luasnip").lsp_expand(args.body)
+        end,
+      }
+
       opts.mappings = cmp.mapping.preset.insert({
         ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
         ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
@@ -136,6 +116,33 @@ return {
         }),
       })
     end,
+
+    -- somehow luasnip jump keymaps only work when put here
+    keys = {
+      {
+        "<tab>",
+        function()
+          return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
+        end,
+        expr = true,
+        silent = true,
+        mode = "i",
+      },
+      {
+        "<tab>",
+        function()
+          require("luasnip").jump(1)
+        end,
+        mode = "s",
+      },
+      {
+        "<s-tab>",
+        function()
+          require("luasnip").jump(-1)
+        end,
+        mode = { "i", "s" },
+      },
+    },
   },
 
   -- Make tokyonight transparent
@@ -185,26 +192,41 @@ return {
 
   {
     "folke/which-key.nvim",
-    init = function(_)
-      -- Add bindings which show up as group name
-      local wk = require("which-key")
-      wk.register({
-        m = { name = "window" },
-      }, { mode = "n", prefix = "<leader>" })
-    end,
+    opts = {
+      spec = {
+        -- Add bindings which show up as group name
+        {
+          mode = "n",
+          { "<leader>m", group = "window" },
+        },
+      },
+
+      -- mason doesn't work with nixos
+      {
+        "williamboman/mason.nvim",
+        opts = function(_, opts)
+          opts.ensure_installed = {
+            -- enable if not on nixos
+            -- "stylua",
+            -- "shfmt",
+            -- "flake8",
+            "markdownlint", -- maybe works with nixos since this is not an lsp
+          }
+        end,
+      },
+    },
   },
 
-  -- mason doesn't work with nixos
   {
-    "williamboman/mason.nvim",
-    opts = function(_, opts)
-      opts.ensure_installed = {
-        -- enable if not on nixos
-        -- "stylua",
-        -- "shfmt",
-        -- "flake8",
-        "markdownlint", -- maybe works with nixos since this is not an lsp
-      }
+    "folke/trouble.nvim",
+    init = function()
+      vim.api.nvim_create_autocmd({ "FileType" }, {
+        group = vim.api.nvim_create_augroup("lazyvim_trouble_conceal", { clear = true }),
+        pattern = { "trouble" },
+        callback = function()
+          vim.wo.conceallevel = 0
+        end,
+      })
     end,
   },
 

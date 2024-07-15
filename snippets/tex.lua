@@ -119,7 +119,8 @@ return {}, {
   ms(">>", t("\\gg")),
   ms("<<", t("\\ll")),
   ms("xx", t("\\times")),
-  ms("**", t("\\cdot")),
+  ms("**", t("\\blank")),
+  ms("\\blank*", t("\\cdot")),
   ms("sim", t("\\sim")),
   ms("\\simidd", t("\\overset{\\text{i.d.d.}}{\\sim}")),
   ms("prox", t("\\approx")),
@@ -158,9 +159,9 @@ return {}, {
   -- Display math
   ts({ trig = "dm", wordTrig = true },
     fmta([[
-        $$
+        \[
           <>
-        $$
+        \]
       ]], d(1, get_visual))),
 
   -- Environment block
