@@ -20,6 +20,7 @@ set("n", "<C-\\>", lazyterm, { desc = "Terminal (root dir)" })
 set("t", "<C-\\>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 
 del("n", "<leader>ww")
+del("n", "<leader>wm")
 del("n", "<leader>wd")
 del("n", "<leader>w-")
 del("n", "<leader>w|")
