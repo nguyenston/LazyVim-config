@@ -3,8 +3,9 @@ local imports = {
     return {
       julials = require("plugins.lspconfig.julia").julials(false),
       tsserver = require("plugins.lspconfig.typescript").tsserver(use_mason),
-      pyright = require("plugins.lspconfig.python").pyright(use_mason),
-      ruff_lsp = require("plugins.lspconfig.python").ruff_lsp(use_mason),
+      basedpyright = require("plugins.lspconfig.python").basedpyright(use_mason),
+      -- pylyzer = require("plugins.lspconfig.python").pylyzer(use_mason),
+      ruff = require("plugins.lspconfig.python").ruff(use_mason),
       clangd = require("plugins.lspconfig.cpp").clangd(use_mason),
       -- ccls = require("plugins.lspconfig.cpp").ccls(use_mason),
       nil_ls = { mason = use_mason },
@@ -16,7 +17,7 @@ local imports = {
   end,
 
   setup = {
-    ruff_lsp = require("plugins.lspconfig.python").setup.ruff_lsp,
+    ruff = require("plugins.lspconfig.python").setup.ruff_lsp,
     clangd = require("plugins.lspconfig.cpp").setup.clangd,
   },
 }

@@ -1,5 +1,10 @@
 return {
-  pyright = function(use_mason)
+  pylyzer = function(use_mason)
+    return {
+      mason = use_mason,
+    }
+  end,
+  basedpyright = function(use_mason)
     return {
       mason = use_mason,
       capabilities = (function()
@@ -8,18 +13,17 @@ return {
         return capabilities
       end)(),
       settings = {
-        pyright = {
+        basedpyright = {
           disableOrganizeImports = true, -- Using Ruff
-        },
-        python = {
           analysis = {
+            typeCheckingMode = "standard",
             -- ignore = { "*" }, -- Using Ruff
           },
         },
       },
     }
   end,
-  ruff_lsp = function(use_mason)
+  ruff = function(use_mason)
     return {
       mason = use_mason,
       keys = {
@@ -41,13 +45,11 @@ return {
   end,
 
   setup = {
-    ruff_lsp = function()
+    ruff = function()
       require("lazyvim.util").lsp.on_attach(function(client, _)
-        if client.name == "ruff_lsp" then
-          -- Disable hover in favor of Pyright
-          client.server_capabilities.hoverProvider = false
-        end
-      end)
+        -- Disable hover in favor of Pyright
+        client.server_capabilities.hoverProvider = false
+      end, "ruff")
     end,
   },
 }
