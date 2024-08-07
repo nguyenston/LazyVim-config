@@ -150,9 +150,10 @@ return {
     "folke/tokyonight.nvim",
     opts = {
       transparent = true,
+      style = "storm",
       styles = {
         sidebars = "transparent",
-        floats = "transparent",
+        -- floats = "transparent",
       },
     },
   },
@@ -233,6 +234,7 @@ return {
   -- Treesitter extra languages
   {
     "nvim-treesitter/nvim-treesitter",
+    lazy = false,
     opts = {
       ensure_installed = {
         "toml",
