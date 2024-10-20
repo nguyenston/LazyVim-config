@@ -44,7 +44,7 @@ return {}, {
   ms(";La", t("\\Lambda")),
   ms(";rh", t("\\rho")),
   ms(";ep", t("\\epsilon")),
-  ms("\\epsilonv", t("\\varepsilon")),
+  ms("\\epsilonva", t("\\varepsilon")),
   ms(";mu", t("\\mu")),
   ms(";nu", t("\\nu")),
   ms(";et", t("\\eta")),
