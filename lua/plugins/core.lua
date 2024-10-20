@@ -80,6 +80,7 @@ return {
       })
 
       opts.sources = cmp.config.sources({
+        { name = "codeium" },
         {
           name = "latex_symbols",
           option = {
