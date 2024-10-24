@@ -78,6 +78,8 @@ return {}, {
   ms("int", c(1, { t("\\int"), sn(nil, fmta("\\int^{<>}_{<>}", { i(2, "\\infty"), i(1, "-\\infty") })) })),
   ms("det", t("\\det")),
   ms("tp", t("\\transpose")),
+  ms("mid", t("\\mid")),
+  ms("\\m\\identityle", t("\\middle")),
   ms("dag", t("\\dagg")),
   ms("inv", t("\\inv")),
   ms("tr", t("\\trace")),
@@ -85,7 +87,9 @@ return {}, {
   ms("mop", fmta("\\mop{<>}", d(1, get_visual))),
 
   ms("ubra", fmta("\\underbrace{<>}", { d(1, get_visual) })),
+  ms("obra", fmta("\\overbrace{<>}", { d(1, get_visual) })),
   ms("uset", fmta("\\underset{<>}{<>}", { i(2), d(1, get_visual) })),
+  ms("oset", fmta("\\overset{<>}{<>}", { i(2), d(1, get_visual) })),
   ms("canc", fmta("\\cancel{<>}", d(1, get_visual))),
   ms("canto", fmta("\\cancelto{<>}{<>}", { i(2), d(1, get_visual) })),
 
