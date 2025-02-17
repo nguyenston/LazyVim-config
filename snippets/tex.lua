@@ -62,6 +62,7 @@ return {}, {
   pfx_cmd("ddo", { cmd = "ddot" }),
   pfx_cmd("bar", { cmd = "overline" }),
   pfx_cmd("til", { cmd = "tilde" }),
+  pfx_cmd("check", { cmd = "check" }),
   pfx_cmd("vm", { cmd = "vm" }), -- vector or matrix, basically bold upright
   pfx_cmd("bm", { cmd = "bm" }), -- bold but not upright
   pfx_cmd("und", { cmd = "underline" }),
@@ -69,7 +70,7 @@ return {}, {
   -- operations
   ms("tt", fmta("\\text{<>}", d(1, get_visual))),
   ms("srt", fmta("\\sqrt{<>}", d(1, get_visual))),
-  ms("ff", fmta("\\frac{<>}{<>}", { i(1), i(2) })),
+  ms("frac", fmta("\\frac{<>}{<>}", { i(1), i(2) })),
   ms("ee", fmta("e^{<>}", i(1))),
   ms("mrm", fmta("\\mathrm{<>}", d(1, get_visual))),
   ms("lim", c(1, { sn(nil, fmta("\\lim_{<>\\to<>}", { i(1, "n"), i(2, "\\infty") })), t("\\lim") })),
