@@ -13,6 +13,7 @@ local imports = {
       -- marksman = { mason = false },
       lua_ls = require("plugins.lspconfig.lua").lua_ls(use_mason),
       r_language_server = require("plugins.lspconfig.R").r_language_server(use_mason),
+      texlab = require("plugins.lspconfig.latex").texlab(use_mason),
     }
   end,
 

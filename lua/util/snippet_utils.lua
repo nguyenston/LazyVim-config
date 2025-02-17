@@ -87,7 +87,7 @@ return function(is_math)
   -- Usage: \command1<trig> -> \<cmd>{\command1}
   -- By default only expand in math mode
   local postfix_command = function(trig, args)
-    local patterns = args.patterns or { "\\[%w]+%{[^%}%s]*[^%{%s]*%}", "\\[%w]+", "[%w]" }
+    local patterns = args.patterns or { "\\[%w]+%{[^%}%s]*[^%{%s]*%}", "\\[%w]+", "%s?([%w])" }
     local resolve_expand_params = function(_, line_to_cursor, match, _)
       local line_to_cursor_except_match = line_to_cursor:sub(1, #line_to_cursor - #match)
       local postfix_match, captures = match_multi(line_to_cursor_except_match, patterns)
@@ -122,7 +122,10 @@ return function(is_math)
     local nodes = args.nodes
       or {
         f(function(_, parent)
-          return "\\" .. args.cmd .. "{" .. parent.snippet.env.POSTFIX_MATCH .. "}"
+          local match = parent.snippet.env.POSTFIX_MATCH
+          local captures = parent.snippet.env.POSTFIX_CAPTURES
+          local content = #captures > 0 and captures[1] or match
+          return "\\" .. args.cmd .. "{" .. content .. "}"
         end),
       }
 
