@@ -6,7 +6,7 @@ local set = vim.keymap.set
 local del = vim.keymap.del
 local Util = require("lazyvim.util")
 local lazyterm = function()
-  Util.terminal(nil, { cwd = Util.root() })
+  Snacks.terminal(nil, { cwd = Util.root() })
 end
 
 set("n", "<leader>fs", "<cmd>w<cr><esc>", { desc = "Save file" })
