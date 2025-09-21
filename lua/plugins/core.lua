@@ -287,7 +287,7 @@ return {
 
   -- mason doesn't work with nixos
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = function(_, opts)
       opts.ensure_installed = {
         -- enable if not on nixos

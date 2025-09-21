@@ -16,7 +16,7 @@ return {
   },
 
   {
-    "echasnovski/mini.pairs",
+    "nvim-mini/mini.pairs",
     lazy = false, -- Needed to have $$ only active for tex files
     config = function(_, opts)
       require("mini.pairs").setup(opts)
