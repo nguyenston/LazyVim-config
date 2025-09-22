@@ -41,7 +41,28 @@ return {
         end,
       })
 
-      vim.g.vimtex_view_method = "zathura"
+      -- Dynamically configure the VimTeX PDF viewer based on the operating system
+      if vim.fn.has('win32') == 1 then
+        -- ## Windows Configuration ##
+        -- Use the built-in 'sumatra' method for seamless integration.
+        vim.g.vimtex_view_method = 'sumatra'
+
+        -- Recommended options for SumatraPDF to reuse the same window.
+        vim.g.vimtex_view_sumatrapdf_options = '-reuse-instance -forward-search'
+      else
+        -- ## Linux/macOS Configuration ##
+        -- Use the 'zathura' method. VimTeX will handle the SyncTeX options automatically.
+        vim.g.vimtex_view_method = 'zathura'
+      end
+
+      -- This setting is crucial for robust inverse search on windows.
+      -- It enables the callback feature of latexmk.
+      vim.g.vimtex_compiler_latexmk = {
+        callback = 1,
+        continuous = 1,
+        executable = 'latexmk',
+      }
+
       vim.g.vimtex_mappings_disable = { ["n"] = { "K" } } -- disable `K` as it conflicts with LSP hover
       vim.g.vimtex_quickfix_method = vim.fn.executable("pplatex") == 1 and "pplatex" or "latexlog"
       vim.g.vimtex_imaps_enabled = 0
