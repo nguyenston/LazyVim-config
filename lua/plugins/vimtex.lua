@@ -45,10 +45,8 @@ return {
       if vim.fn.has('win32') == 1 then
         -- ## Windows Configuration ##
         -- Use the built-in 'sumatra' method for seamless integration.
-        vim.g.vimtex_view_method = 'sumatra'
-
-        -- Recommended options for SumatraPDF to reuse the same window.
-        vim.g.vimtex_view_sumatrapdf_options = '-reuse-instance -forward-search'
+        vim.g.vimtex_view_general_viewer  = 'SumatraPDF'
+        vim.g.vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf'
       else
         -- ## Linux/macOS Configuration ##
         -- Use the 'zathura' method. VimTeX will handle the SyncTeX options automatically.
