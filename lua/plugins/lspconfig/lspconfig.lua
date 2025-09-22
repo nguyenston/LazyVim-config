@@ -28,7 +28,8 @@ return {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)
       -- if not nixos, use mason
-      local use_mason = require("util.misc").file_exists("~/.config/nvim/is-not-nixos.flag")
+      local config_root = vim.fn.stdpath("config")
+      local use_mason = require("util.misc").file_exists(config_root .. "/is-not-nixos.flag")
       opts.servers = imports.servers(use_mason)
       opts.setup = imports.setup
     end,
