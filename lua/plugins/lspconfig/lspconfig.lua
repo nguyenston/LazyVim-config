@@ -8,7 +8,7 @@ local imports = {
       ruff = require("plugins.lspconfig.python").ruff(use_mason),
       clangd = require("plugins.lspconfig.cpp").clangd(use_mason),
       -- ccls = require("plugins.lspconfig.cpp").ccls(use_mason),
-      nil_ls = { mason = use_mason },
+      nil_ls = { mason = false },
       rust_analyzer = require("plugins.lspconfig.rust").rust_analyzer(use_mason),
       -- marksman = { mason = false },
       lua_ls = require("plugins.lspconfig.lua").lua_ls(use_mason),
