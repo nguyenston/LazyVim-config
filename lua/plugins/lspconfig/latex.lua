@@ -20,6 +20,9 @@ return {
           forwardSearch = {
             args = {},
           },
+          inlayHints = {
+            maxLength = 20,
+          },
           latexFormatter = "latexindent",
           latexindent = {
             modifyLineBreaks = false,
