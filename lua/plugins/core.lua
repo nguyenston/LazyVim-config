@@ -81,6 +81,7 @@ return {
     -- make sure to set opts so that lazy.nvim calls blink.compat's setup
     opts = {},
   },
+
   {
     "saghen/blink.cmp",
     version = "0.*",
@@ -90,6 +91,15 @@ return {
       -- "micangl/cmp-vimtex",
     },
     opts = {
+      -- WARN: TEMP FIX FOR NEW BLINK VALIDATOR
+      --
+      cmdline = {
+        keymap = {
+          ["<Right>"] = {},
+          ["<Left>"] = {},
+        },
+      },
+
       sources = {
         default = { "latex_symbols" },
         providers = {

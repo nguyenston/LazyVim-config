@@ -177,7 +177,7 @@ return {}, {
         \end{<>}
       ]], {
         i(1),
-        i(0),
+        d(2, get_visual),
         rep(1)
       })),
 

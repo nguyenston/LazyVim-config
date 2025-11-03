@@ -21,6 +21,8 @@ return {
             args = {},
           },
           inlayHints = {
+            -- labelDefinitions = false,
+            -- labelReferences = false,
             maxLength = 20,
           },
           latexFormatter = "latexindent",
