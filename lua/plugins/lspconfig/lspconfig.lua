@@ -2,7 +2,8 @@ local imports = {
   servers = function(use_mason)
     return {
       julials = require("plugins.lspconfig.julia").julials(false),
-      tsserver = require("plugins.lspconfig.typescript").tsserver(use_mason),
+      vtsls = require("plugins.lspconfig.typescript").vtsls(use_mason),
+      svelte = require("plugins.lspconfig.typescript"),
       basedpyright = require("plugins.lspconfig.python").basedpyright(use_mason),
       -- pylyzer = require("plugins.lspconfig.python").pylyzer(use_mason),
       ruff = require("plugins.lspconfig.python").ruff(use_mason),

@@ -337,6 +337,7 @@ return {
         "c",
         "cpp",
         "css",
+        "svelte",
       },
     },
   },

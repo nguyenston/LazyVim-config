@@ -8,13 +8,12 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
-
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
     {
       "LazyVim/LazyVim",
-      import = "lazyvim.plugins"
+      import = "lazyvim.plugins",
     },
     -- import any extras modules here
     { import = "lazyvim.plugins.extras.coding.mini-surround" }, -- import/override with your plugins
@@ -27,7 +26,7 @@ require("lazy").setup({
     { import = "plugins.core" },
     { import = "plugins.lspconfig.lspconfig" },
     { import = "plugins.vimtex" },
-    { import = "plugins.obsidian" },
+    -- { import = "plugins.obsidian" },
     -- { import = "plugins.python" },
     { import = "plugins.cpp" },
     -- { import = "plugins.conjure" },
